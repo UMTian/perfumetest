@@ -1,0 +1,439 @@
+:root {
+    --primary-color: #000000;
+    --text-color: #1a1a1a;
+    --light-text: #666666;
+    --bg-color: #ffffff;
+    --accent-gold: #c5a059;
+    --whatsapp-green: #25d366;
+    --transition: all 0.4s ease;
+    --header-height: 80px;
+    --top-bar-height: 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Top Announcement Bar */
+.top-bar {
+    height: var(--top-bar-height);
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Header */
+.main-header {
+    height: var(--header-height);
+    background: white;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4a3728;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-menu ul li a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li a.active {
+    color: var(--accent-gold);
+}
+
+.header-actions {
+    display: flex;
+    gap: 25px;
+    font-size: 1.1rem;
+}
+
+/* Hero Slider - Optimized for 2048x1151 */
+.hero {
+    width: 100%;
+    /* Maintain the specific aspect ratio provided */
+    aspect-ratio: 2048 / 1151;
+    max-width: 2048px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.hero-slider {
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ensure the full image is shown */
+    background-size: 100% 100%;
+    /* Since we've set the aspect ratio of the container, 100% 100% is safe */
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Brand Strip / Marquee */
+.brand-strip {
+    padding: 60px 0;
+    background: #fff;
+    overflow: hidden;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 80px;
+    animation: scroll 30s linear infinite;
+    align-items: center;
+}
+
+.marquee-content span {
+    font-size: 2.2rem;
+    color: #333;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+/* Different Font Styles */
+.font-serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.font-sans {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 6px;
+}
+
+.font-display {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.font-script {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Featured Section */
+.featured-section {
+    padding: 40px 0 100px;
+}
+
+.featured-container {
+    display: flex;
+    gap: 20px;
+}
+
+.featured-card {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+.featured-card:hover {
+    transform: translateY(-10px);
+}
+
+.featured-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Match Section */
+.match-section {
+    padding: 100px 0 60px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+}
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.match-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 550px;
+}
+
+.match-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.match-card:hover img {
+    transform: scale(1.08);
+}
+
+.match-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 12px 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Section */
+.video-section {
+    padding: 20px 0 100px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.brand-video {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/* Collection Section */
+.collection-section {
+    padding: 60px 0 120px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.product-card {
+    background: #fff;
+    transition: transform 0.4s ease;
+    text-align: center;
+}
+
+.product-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product-img-wrapper img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.product-info {
+    padding: 0 10px;
+}
+
+.product-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.product-brand {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+}
+
+.product-price {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .product-name {
+        font-size: 0.85rem;
+    }
+}
+
+/* WhatsApp Button */
+.whatsapp-sticky {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.chat-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--whatsapp-green);
+    text-transform: uppercase;
+}
+
+.whatsapp-btn {
+    width: 60px;
+    height: 60px;
+    background-color: var(--whatsapp-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+        /* Better for mobile to avoid tiny image */
+    }
+}
