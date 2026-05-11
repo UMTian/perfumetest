@@ -156,6 +156,10 @@ ul {
         background-size: cover;
         /* Cover better for mobile aspect ratios */
     }
+
+    .featured-container {
+        flex-direction: column;
+    }
 }
 
 /* Brand Strip / Marquee */
@@ -1572,5 +1576,32 @@ footer {
     .cart-drawer {
         width: 100%;
         right: -100%;
+    }
+}
+
+/* HIGH PRIORITY MOBILE OVERRIDES */
+@media (max-width: 900px) {
+    .match-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .match-card {
+        width: 100% !important;
+        height: 400px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .match-label {
+        font-size: 1.2rem !important;
+        bottom: 20px !important;
+        left: 20px !important;
+        padding: 15px 30px !important;
+    }
+
+    .section-title {
+        font-size: 2.2rem !important;
+        margin-bottom: 40px !important;
     }
 }
