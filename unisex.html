@@ -82,6 +82,34 @@
             <button class="checkout-btn">CHECKOUT ON WHATSAPP</button>
         </div>
     </div>
+    <!-- Checkout Details Modal -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>DELIVERY DETAILS</h3>
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="checkout-phone" placeholder="e.g. 03001234567" required>
+                </div>
+                <div class="form-group">
+                    <label>Full Delivery Address *</label>
+                    <textarea id="checkout-address" placeholder="House #, Street, Area, City" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Postal Code (Optional)</label>
+                    <input type="text" id="checkout-postal" placeholder="e.g. 46000">
+                </div>
+                <div class="form-group">
+                    <label>Google Map Link (Optional)</label>
+                    <input type="url" id="checkout-location" placeholder="Paste link here">
+                </div>
+                <button type="submit" class="confirm-order-btn">CONFIRM & SEND ON WHATSAPP</button>
+            </form>
+        </div>
+    </div>
     <div class="drawer-overlay"></div>
 
     <main>

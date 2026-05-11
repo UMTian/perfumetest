@@ -219,11 +219,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- WHATSAPP CHECKOUT --- */
     const checkoutBtn = document.querySelector('.checkout-btn');
-    if (checkoutBtn) {
+    const checkoutModal = document.getElementById('checkout-modal');
+    const checkoutForm = document.getElementById('checkout-form');
+    const closeModalBtn = document.querySelector('.close-modal');
+
+    if (checkoutBtn && checkoutModal) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) return alert('Your cart is empty!');
 
+            // Close cart drawer first
+            cartDrawer.classList.remove('active');
+            // Keep overlay active for modal
+
+            // Open delivery details modal
+            checkoutModal.classList.add('active');
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+        });
+    }
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get Delivery Details
+            const phone = document.getElementById('checkout-phone').value;
+            const address = document.getElementById('checkout-address').value;
+            const postal = document.getElementById('checkout-postal').value;
+            const location = document.getElementById('checkout-location').value;
+
+            // Construct Message
             let message = "Salam Velirra! I would like to place an order:\n\n";
+            message += "*--- ORDER DETAILS ---*\n";
+
             let total = 0;
             cart.forEach(item => {
                 message += `• ${item.name} x${item.quantity} (₨ ${item.price * item.quantity})\n`;
@@ -235,15 +268,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 message += `\nSubtotal: ₨ ${total}\n`;
                 message += `Promo Discount (20%): -₨ ${discount}\n`;
                 message += `*Grand Total: ₨ ${total - discount}*\n`;
-                message += `Code Applied: velirra12345`;
+                message += `Code Applied: velirra12345\n`;
             } else {
                 message += `\n*Total: ₨ ${total}*\n`;
             }
 
+            message += "\n*--- DELIVERY DETAILS ---*\n";
+            message += `📞 Phone: ${phone}\n`;
+            message += `📍 Address: ${address}\n`;
+            if (postal) message += `📮 Postal Code: ${postal}\n`;
+            if (location) message += `🗺️ Map Location: ${location}\n`;
+
             message += "\n\nPlease let me know the payment details.";
 
+            // Open WhatsApp
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/923710738971?text=${encodedMessage}`, '_blank');
+
+            // Reset and Close
+            checkoutModal.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+
+            // Optional: Clear cart after order
+            // cart = [];
+            // updateCartUI();
         });
     }
 
