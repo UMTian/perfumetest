@@ -777,9 +777,35 @@ footer {
 
 .carousel-controls {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 30px;
     margin-top: 50px;
+}
+
+.carousel-controls button {
+    background: #000;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.carousel-controls button:hover {
+    background: #e74c3c;
+    transform: scale(1.1);
+}
+
+.dots {
+    display: flex;
+    gap: 12px;
 }
 
 .dot {
@@ -793,7 +819,8 @@ footer {
 
 .dot.active {
     background: #e74c3c;
-    transform: scale(1.3);
+    width: 20px;
+    border-radius: 4px;
 }
 
 @media (max-width: 768px) {

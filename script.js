@@ -263,6 +263,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* --- TESTIMONIAL CAROUSEL --- */
+    const testimonialTrack = document.querySelector('.testimonial-track');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.dot');
+    const nextBtn = document.querySelector('.next-test');
+    const prevBtn = document.querySelector('.prev-test');
+
+    if (testimonialTrack && testimonialCards.length > 0) {
+        let currentIdx = 0;
+        const totalSlides = testimonialCards.length;
+
+        function getCardsPerView() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function updateCarousel() {
+            const cardsPerView = getCardsPerView();
+            const cardWidth = testimonialCards[0].offsetWidth + 30; // Including gap
+            testimonialTrack.style.transform = `translateX(-${currentIdx * cardWidth}px)`;
+
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIdx);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const maxIdx = totalSlides - getCardsPerView();
+                currentIdx = (currentIdx + 1) > maxIdx ? 0 : currentIdx + 1;
+                updateCarousel();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const maxIdx = totalSlides - getCardsPerView();
+                currentIdx = (currentIdx - 1) < 0 ? maxIdx : currentIdx - 1;
+                updateCarousel();
+            });
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIdx = index;
+                updateCarousel();
+            });
+        });
+
+        // Handle Resizing
+        window.addEventListener('resize', updateCarousel);
+    }
+
     // Initial Load
     updateCartUI();
 });
